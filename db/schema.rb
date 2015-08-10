@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150808164726) do
+ActiveRecord::Schema.define(version: 20150808181212) do
+
+  create_table "frelationships", force: :cascade do |t|
+    t.integer  "fmicropost_id"
+    t.integer  "fuser_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "frelationships", ["fmicropost_id", "fuser_id"], name: "index_frelationships_on_fmicropost_id_and_fuser_id", unique: true
+  add_index "frelationships", ["fmicropost_id"], name: "index_frelationships_on_fmicropost_id"
+  add_index "frelationships", ["fuser_id"], name: "index_frelationships_on_fuser_id"
 
   create_table "microposts", force: :cascade do |t|
     t.integer  "user_id"
