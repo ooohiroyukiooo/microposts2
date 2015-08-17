@@ -20,11 +20,11 @@ class UsersController < ApplicationController
   end
   
   def edit
-     @user = User.find(current_user)
+     @user = User.find(params[:id])
   end
   
   def update
-     @user = User.find(current_user)
+     @user = User.find(params[:id])
     if @user.update(user_params)
       # 保存に成功した場合はトップページへリダイレクト
       redirect_to root_path , notice: '基本情報を編集しました'

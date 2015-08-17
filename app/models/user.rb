@@ -48,6 +48,10 @@ class User < ActiveRecord::Base
   def unfavorite(other_micropost)
     frelationships.find_by(fuser_id: other_micropost.id).destroy
   end
+  
+  def feed_items
+    Micropost.where(user_id: following_user_ids + [self.id])
+  end
 
  # あるユーザーのコメントをお気に入りにしているかどうか？
   #def favorited?(other_micropost)
